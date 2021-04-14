@@ -72,9 +72,9 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     # our apps
-    'users',
-    'recruiters',
-    'candidates',
+    'users.apps.UsersConfig',
+    'recruiters.apps.RecruitersConfig',
+    'candidates.apps.CandidatesConfig',
 
     # used to perform cleanup operations like past values
     #  stored as dropdown box in form fields etc
@@ -198,3 +198,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
