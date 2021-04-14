@@ -15,6 +15,7 @@ import environ
 import os
 
 env = environ.Env()
+
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -83,6 +84,7 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' # uses bootstrap4 for rendering forms
 LOGIN_URL = '/'
+
 LOGIN_REDIRECT_URL = '/home'
 SITE_ID = 1
 
