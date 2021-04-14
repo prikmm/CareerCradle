@@ -5,5 +5,5 @@ from django.urls.conf import include
 app_name = 'candidates'
 
 urlpatterns = [
-    path('',),
+    path(''),
 ]

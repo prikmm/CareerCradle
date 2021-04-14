@@ -83,9 +83,10 @@ INSTALLED_APPS = [
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' # uses bootstrap4 for rendering forms
-LOGIN_URL = '/'
+LOGIN_URL = 'login'
 
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = '/select'
+LOGOUT_REDIRECT_URL = 'login'
 SITE_ID = 1
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -140,6 +141,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
