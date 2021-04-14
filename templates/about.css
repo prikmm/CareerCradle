@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navigation-Bar */
+  #navbar{
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 0px;
+  }
+  
+  #navbar::before{
+    content: "";
+    background-color:black;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.2;
+    
+  }
+  
+  /* Navigation-Bar :Logo and Image */
+  #logo{
+    margin: 10px 20px;
+  
+  }
+  
+  #logo img{
+    margin: 3px 6px;
+    height: 40px;
+  
+  }
+  
+  
+  /* Navigation-Bar : List Styling */
+  
+  #navbar ul{
+    margin: 10px 20px;
+    display: flex;
+    font-family: 'Baloo Bhai', cursive;
+  }
+  
+  #navbar ul li{
+    list-style: none;
+    text-decoration:underline;
+    font-size: 1.3rem;
+  }
+  
+  #navbar ul li a{
+    color:black;
+    display: block;
+    padding: 3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+  
+  #navbar ul li a:hover{
+    color:black;
+    background-color: white;
+  
+  }
+  
+  /* Utility Classes */
+.h-primary{
+    font-size: 3.8rem;
+    padding: 12px;
+    text-align: center;
+    font-family: 'Bree Serif',serif;
+}
+  
+.h-secondary{
+    font-family: 'Bree Serif',serif;
+    font-size: 2.3rem;
+    padding: 12px;
+    text-align: center;
+}
+
+/* About */
+
+#about{
+    margin: 34px;
+    display: flex;
+  }
+#about .box{
+    border: 2px solid brown;
+    padding: 50px;
+    margin: 3px 6px;
+    width: 60%;
+    margin: auto;
+    border-radius: 28px;
+    background-color: rgba(160, 156, 156, 0.938);
+    
+}
+#about .box img{
+    height: 160px;
+    margin: auto;
+    display: block;
+}
+  
+#about .box p{
+    font-family: 'Bree Serif',serif;
+    
+}
+
+footer{
+    background: black;
+    color: white;
+    padding: 9px 20px;
+    text-align: center;
+}
