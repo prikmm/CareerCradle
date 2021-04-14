@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import environ
+import os
 
 env = environ.Env()
 environ.Env.read_env()
@@ -56,13 +57,63 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    # the social we want use:
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin',
+
+    # provides country choice to users in form and many more stuff
+    'django_countries',
+
+    # provides api for seamless model querying in django
+    'django_filters',
 
     # for rendering beautiful bootstrap forms effortlessly
     # for more info: https://django-crispy-forms.readthedocs.io/en/latest/install.html
     'crispy_forms',
+
+    # our apps
+    'users',
+    'recruiters',
+    'candidates',
+
+    # used to perform cleanup operations like past values
+    #  stored as dropdown box in form fields etc
+    'django_cleanup.apps.CleanupConfig',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4' # uses bootstrap4 for rendering forms
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/home'
 SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    },
+    'linkedin': {
+        'SCOPE': [
+            'r_basicprofile',
+            'r_emailaddress',
+        ],
+        'PROFILE_FIELDS': [
+            'id',
+            'first-name',
+            'last-name',
+            'email-address',
+            'picture-url',
+            'public-profile-url',
+        ]
+    },
+}
+SOCIALACCOUNT_QUERY_EMAIL = True # some social accounts don't let us see the user email address by default
+                                 # this let's us see the user email address while using social accounts
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,7 +130,7 @@ ROOT_URLCONF = 'CareerCradle.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
