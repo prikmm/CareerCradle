@@ -89,7 +89,7 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' # uses bootstrap4 for rendering forms
 LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = 'users/redirect'
+LOGIN_REDIRECT_URL = '/users/redirect'
 SITE_ID = 4
 
 # uses our custom User model for authentication
@@ -102,6 +102,7 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 ACCOUNT_FORMS = {'signup': 'users.forms.MyCustomSignupForm'}
+#SOCIALACCOUNT_ADAPTER = 'users.adapter.MySocialAccountAdapter'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

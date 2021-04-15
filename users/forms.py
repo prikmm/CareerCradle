@@ -22,4 +22,18 @@ class MyCustomSignupForm(SignupForm):
         user.save()
         return user
         
+
+class UserTypeForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(UserTypeForm, self).__init__(*args, **kwargs)
+        self.fields['usertype'] = forms.ChoiceField(choices=[(1, "Candidate"),
+                                                             (0, "Recruiter")],
+                                                    widget=forms.RadioSelect)
+    
+    def save(self, request):
+        user = request.user
+        user.usertype = self.cleaned_data.pop('usertype')
+        user.save()
+        return user
+
         
