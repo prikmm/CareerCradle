@@ -44,6 +44,10 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+# for printing confirmation email to console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -60,7 +64,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # the social we want use:
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.facebook',
 
     # provides country choice to users in form and many more stuff
     'django_countries',
@@ -82,12 +86,20 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4' # uses bootstrap4 for rendering forms
-LOGIN_URL = 'login'
 
-LOGIN_REDIRECT_URL = '/select'
-LOGOUT_REDIRECT_URL = 'login'
-SITE_ID = 1
+CRISPY_TEMPLATE_PACK = 'bootstrap4' # uses bootstrap4 for rendering forms
+LOGIN_URL = '/'
+#LOGIN_REDIRECT_URL = '/select'
+SITE_ID = 4
+
+# uses our custom User model for authentication
+AUTH_USER_MODEL = 'users.User'
+
+# Global parameters for allauth indicating email to be used as username
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -99,19 +111,28 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online',
         }
     },
-    'linkedin': {
-        'SCOPE': [
-            'r_basicprofile',
-            'r_emailaddress',
-        ],
-        'PROFILE_FIELDS': [
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
             'id',
-            'first-name',
-            'last-name',
-            'email-address',
-            'picture-url',
-            'public-profile-url',
-        ]
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        #'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.12',
     },
 }
 SOCIALACCOUNT_QUERY_EMAIL = True # some social accounts don't let us see the user email address by default
