@@ -1,9 +1,9 @@
-from django.contrib import admin
 from django.urls import path
-from django.urls.conf import include
+from .views import CandidateHomeView
+
 
 app_name = 'candidates'
 
 urlpatterns = [
-    path(''),
+    path('home/', CandidateHomeView.as_view(), name='home'),
 ]

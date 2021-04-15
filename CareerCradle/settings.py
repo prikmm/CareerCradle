@@ -77,9 +77,9 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     # our apps
-    'users.apps.UsersConfig',
-    'recruiters.apps.RecruitersConfig',
-    'candidates.apps.CandidatesConfig',
+    'users',
+    'recruiters',
+    'candidates',
 
     # used to perform cleanup operations like past values
     #  stored as dropdown box in form fields etc
@@ -89,7 +89,7 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' # uses bootstrap4 for rendering forms
 LOGIN_URL = '/'
-#LOGIN_REDIRECT_URL = '/select'
+LOGIN_REDIRECT_URL = 'users/redirect'
 SITE_ID = 4
 
 # uses our custom User model for authentication
@@ -100,6 +100,8 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+ACCOUNT_FORMS = {'signup': 'users.forms.MyCustomSignupForm'}
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -162,7 +164,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
+                #'django.template.context_processors.request',
             ],
         },
     },

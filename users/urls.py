@@ -1,10 +1,8 @@
-from django.contrib import admin
 from django.urls import path
-from django.urls.conf import include
-from django.conf.urls import url
+from .views import UsertypeRedirectView
 
 app_name = 'users'
 
 urlpatterns = [
-    url(r'^accounts/', include('allauth.urls')),
+    path('redirect', UsertypeRedirectView.as_view(), name='redirect')
 ]
