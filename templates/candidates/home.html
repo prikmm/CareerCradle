@@ -1,0 +1,79 @@
+{% extends 'base_main.html' %}
+
+{% load static %}
+
+{%	block	title	%}candidate{%	endblock	%}
+
+
+  {% block content %}
+
+    <!-- Works -->
+    <section id="works" class="dark">
+      <div class="inner-width">
+        <h1 class="section-title">Trending Jobs</h1>
+        <div class="works">
+          <a href="{% static 'images/webd.jpg' %}" class="work">
+            <img src="{% static 'images/webd.jpg' %}" alt="web development">
+            <div class="info">
+              <h3>Web Developer</h3>
+              <div class="cat">web design,
+              web publishing, web programming, and database management</div>
+            </div>
+          </a>
+
+          <a href="{% static 'images/bnk.jpg' %}" class="work">
+            <img src="{% static 'images/bnk.jpg' %}" alt="">
+            <div class="info">
+              <h3>Banking</h3>
+              <div class="cat">an industry that handles cash, 
+            credit, and other financial transactions.</div>
+            </div>
+          </a>
+
+          <a href="{% static 'images/data.jpg' %}" class="work">
+            <img src="{% static 'images/data.jpg' %}" alt="">
+            <div class="info">
+              <h3>Data Analyst</h3>
+              <div class="cat">inspect, 
+            clean, transform, and modeling data with the goal of 
+            discovering useful information, informing conclusions, 
+            and supporting decision-making.</div>
+            </div>
+          </a>
+
+          <a href="{% static 'images/mark.jpg' %}" class="work">
+            <img src="{% static 'images/mark.jpg' %}" alt="">
+            <div class="info">
+              <h3>Marketing</h3>
+              <div class="cat">create, 
+            communicate, deliver, and exchange offerings
+            that have value for customers, clients, partners, and 
+            society at large.</div>
+            </div>
+          </a>
+
+          <a href="{% static 'images/acc.jpg' %}" class="work">
+            <img src="{% static 'images/acc.jpg' %}" alt="">
+            <div class="info">
+              <h3>Chartered Accountant</h3>
+              <div class="cat">a professional accountant 
+            qualified to work with a spectrum of accountancy related activities.</div>
+            </div>
+          </a>
+
+          <a href="{% static 'images/block.jpg' %}" class="work">
+            <img src="{% static 'images/block.jpg' %}" alt="">
+            <div class="info">
+              <h3>Blockchain Developer</h3>
+              <div class="cat">secure 
+            digital transactions by creating systems to record 
+            and store blockchain data in a way that prevents changes or hacks.</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  {% endblock %}
+
+  
+  

@@ -12,8 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import environ
+import os
 
 env = environ.Env()
+
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,6 +44,10 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+# for printing confirmation email to console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -56,13 +62,85 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    # the social we want use:
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+
+    # provides country choice to users in form and many more stuff
+    'django_countries',
+
+    # provides api for seamless model querying in django
+    'django_filters',
 
     # for rendering beautiful bootstrap forms effortlessly
     # for more info: https://django-crispy-forms.readthedocs.io/en/latest/install.html
     'crispy_forms',
+
+    # our apps
+    'users',
+    'recruiters',
+    'candidates',
+
+    # used to perform cleanup operations like past values
+    #  stored as dropdown box in form fields etc
+    'django_cleanup.apps.CleanupConfig',
 ]
 
-SITE_ID = 1
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4' # uses bootstrap4 for rendering forms
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/users/redirect'
+SITE_ID = 4
+
+# uses our custom User model for authentication
+AUTH_USER_MODEL = 'users.User'
+
+# Global parameters for allauth indicating email to be used as username
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+ACCOUNT_FORMS = {'signup': 'users.forms.MyCustomSignupForm'}
+#SOCIALACCOUNT_ADAPTER = 'users.adapter.MySocialAccountAdapter'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    },
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        #'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.12',
+    },
+}
+SOCIALACCOUNT_QUERY_EMAIL = True # some social accounts don't let us see the user email address by default
+                                 # this let's us see the user email address while using social accounts
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,7 +157,7 @@ ROOT_URLCONF = 'CareerCradle.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,6 +165,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #'django.template.context_processors.request',
             ],
         },
     },
@@ -147,3 +226,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
