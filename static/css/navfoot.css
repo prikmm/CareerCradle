@@ -63,8 +63,10 @@
 }
   
 #navbar ul li a:hover{
-    color:black;
-    background-color: white;
+    color: #48dbfb ;
+    background-color: black;
+    border-radius: 15px;
+    padding: 5px;
   
 }
   

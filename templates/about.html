@@ -1,0 +1,30 @@
+{% extends 'navfoot.html' %}
+{% load  static %}
+
+{%	block	title	%}candidate{%	endblock	%}
+
+{% block content%}
+
+    <link rel="stylesheet" href= " {% static 'css/about.css' %}" />
+
+    <section id="about-container">
+        <h1 class="h-primary center">About-Us</h1>
+        <div id="about">
+            <div class="box">
+                <img src="{% static 'images/Cc.png' %}" alt="">
+                    <br>
+                <p class="center">Career Cradle is a website, where Job-seekers,
+                    Students, Interns can come to in order to start their career properly. Career Cradle can be
+                    used to gain guidance from industry professionals and stay in contact with them. Career
+                    Cradle has only purpose that is to give our society well-trained professionals and give the
+                    qualified professionals the job they truly deserve. When a person has a job they like, it acts as
+                    an emotional, social and financial support in their live and Career Cradle seeks to help in the
+                    betterment of the society by providing people with stability.
+                    </p>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+    
