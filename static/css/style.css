@@ -381,5 +381,21 @@
   
   }
 
+  .btn {
+    position: center;
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    
+  }
+  
+  .btn:hover {
+    background-color: black;
+  }
+
 
   
