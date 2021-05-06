@@ -1,4 +1,4 @@
-{% extends 'base_main.html' %}
+{% extends 'users/base_main.html' %}
 
 {% load static %}
 
@@ -12,8 +12,8 @@
       <div class="inner-width">
         <h1 class="section-title">Trending Jobs</h1>
         <div class="works">
-          <a href="{% static 'images/webd.jpg' %}" class="work">
-            <img src="{% static 'images/webd.jpg' %}" alt="web development">
+          <a href="{% static 'images/IT.jpg' %}" class="work">
+            <img src="{% static 'images/IT.jpg' %}" alt="Information Technology">
             <div class="info">
               <button onclick="document.location='avail_jobs'" class="btn"><h3>Information Technology</h3></button>
               <div class="cat">Applications programmer.
@@ -21,7 +21,6 @@
                                   Software trainer.</div>
             </div>
           </a>
-
           <a href="{% static 'images/bnk.jpg' %}" class="work">
             <img src="{% static 'images/bnk.jpg' %}" alt="">
             <div class="info">

@@ -1,60 +1,87 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load static %}
 
 {% block head_links %} 
 
 <title>Sign In</title>
+<link rel="stylesheet" href="{% static 'account/login.css' %}" />
 
 {% endblock %}
 
-{% block head_title %}{% trans "Sign In" %} {% endblock %}
-
 {% block content %}
-<div class="container-fluid">
 
- {% block messages %}
-    {% if messages %}
-    <div>
-        <ul>
-        {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>{{message}}</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+
+<div class="container">
+  <div class="row row-centered">
+    <div class="col-md-4 col-centered">
+      <div class="well login-well">
+        {% block messages %}
+          {% if messages %}
+          <div>
+              <ul>
+              {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <strong>{{message}}</strong>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+              </div>
+              {% endfor %}
+              </ul>
+          </div>
+          {% endif %}
+        {% endblock %}
+        <div class="socialaccount_ballot col-md-11">
+          <ul class="socialaccount_providers">
+            <li>
+              <a title="Google" class="btn btn-block btn-social btn-md socialaccount_provider btn-google" href="google/login">
+                <i class="fa fa-google"></i> | Google
+              </a>
+            </li>
+            <li>
+              <a title="Facebook" class="btn btn-block btn-social btn-md socialaccount_provider btn-facebook" href="facebook/login">
+                <i class="fa fa-facebook"></i> | Facebook
+              </a>
+            </li>
+          </ul>
         </div>
-        {% endfor %}
-        </ul>
+        <div class="col-md-12">
+          <hr>
+          <form class="login" id="login_form" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="control-label" for="id_login">Email ID</label>
+              <input autofocus="autofocus" class="form-control" id="id_login" maxlength="30" name="login" placeholder="Email ID" required="required" title="" type="text" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="id_password">Password</label>
+              <input class="form-control" id="id_password" name="password" placeholder="Password" required="required" title="" type="password" />
+            </div>
+            <div class="form-group">
+              <div class="checkbox">
+                <label for="id_remember"><input class="" id="id_remember" name="remember" type="checkbox" /> Remember Me </label>
+              </div>
+            </div>
+            {% if redirect_field_value %}
+
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            
+            {% endif %}
+            <div class="form-group pull-center">
+              <button class="btn btn-primary btn-block" type="submit">Sign In</button>
+            </div>
+          </form>
+          <hr>
+        </div>
+        <div class="form-group">
+          <small><a class="text-muted" href="{% url 'account_reset_password' %}">Forgot Password?</a></small>
+          <br>
+          <small><a class="text-muted" href="{% url 'account_signup' %}">Sign up</a></small>
+        </div>
+      </div>
     </div>
-    {% endif %}
-  {% endblock %}
-
-<h3 class="h3" id="head_banner">{% trans "Sign In" %}</h3>
-
-<form class="container-fluid text-center" id="login_form" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  
-  {{ form.as_p }}
-
-  {% if redirect_field_value %}
-  
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  
-  {% endif %}
-  
-  <button  class="btn btn-outline-primary " type="submit">{% trans "Sign In" %}</button>
-  <a  class="btn btn-outline-dark" href="{% url 'account_reset_password' %}">{% trans "Forgot Password ?" %}</a>  
-
-</form>
-    {% load account socialaccount %}
-
-    {% get_providers as socialaccount_providers %}
-    <ul class="social_providers_list">
-    {% for provider in socialaccount_providers %}
-        <a title="{{provider.name}}" class="btn btn-outline-dark" 
-         href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"><i class="fa fa-{{provider.name}}" id="social_icon"></i>{{provider.name}}</a>
-    {% endfor %}
-    </ul>
+  </div>
 </div>
 {% endblock %}

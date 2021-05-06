@@ -1,2 +1,104 @@
-<h1>Welcome {{user}}</h1>
-<h3>Your are logged in as recruiter</h3>
+{% extends 'users/base_main.html' %} 
+
+{% load static %}
+
+{% block custom_scripts_n_links %}
+<link rel="stylesheet" href=" {% static 'css/rec_home.css' %}" />
+{% endblock %}
+
+
+{% block title %}Home{% endblock %}
+
+  {% block content%}
+
+  
+   <!-- <div class="bg">
+      <h2>Welcome to CareerCradle</h2>
+      <h3>It's great to see you here!</h3>
+      <p>Kindly fill the form below to post your job...</p>
+    </div> -->
+  <section class="rec_home">
+    <div class="heading">
+      <h1>Post a Job</h1>
+    </div>
+    <div class="container">
+        <div class="contactForm">
+          <form>
+            <div class="field" id="companydiv">
+              <label for="name">Company Name:</label>
+              <input id="name" type="text" required maxlength="100"/>
+            </div>
+            <div class="field" id="positiondiv">
+              <label for="position">Position:</label>
+              <input id="position" type="text" required maxlength="30"/>
+            </div>
+            <div class="field" id="jobdescdiv">
+              <label for="description">Job Description:</label>
+              <textarea id="description" cols="5" rows="5" maxlength="1500"/></textarea>
+            </div>
+            <div class="field" id="expdiv">
+              <label for="exp">Experience:</label>
+              <input id="exp" type="number" min="0" required/>
+            </div>
+            <div class="field" id="sectordiv">
+                <label for="sector">Job Sector:</label>
+                <input id="sector" type="text" maxlength="50">
+            </div>
+            <div class="field" id="workinghrsdiv">
+              <label for="hours">Working Hours:</label>
+              <input id="hours" type="number" min="1"/>
+            </div>
+            <div class="field" id="citydiv">
+              <label for="city">City:</label>
+              <input id="city" type="text" maxlength="30"/>
+            </div>
+            <div class="field" id="statediv">
+              <label for="state">State:</label>
+              <input id="state" type="text" maxlength="30"/>
+            </div>
+            <div class="field" id="countrydiv">
+              <label for="country">Country:</label>
+              <input id="country" type="text" maxlength="30"/>
+            </div>
+            <div class="field" id="minreqdiv">
+              <label for="requirements">Minimum Requirements:</label>
+              <textarea id="requirements" placeholder="Describe the skill sets suitable for this job role" cols="5" rows="5" maxlength="1500"/></textarea>
+            </div>
+            <div class="field" id="jobtypediv">
+              <div>
+                  <label for="emp">Employment Type:</label>
+              </div>
+              <div class="select">
+                  <select>
+                      <option value="1" selected>Full-time</option>
+                      <option value="2">Part-time</option>
+                      <option value="3">Internship</option>
+                  </select>
+              </div>
+            </div>
+            <div class="field" id="modediv">
+                <div>
+                  <label for="mode">Mode:</label>
+                </div>
+                <div class="radiobtn">
+                  <label for="remote">Remote</label>
+                  <input id="remote" type="radio" name="mode" style="width: 10px;"/>
+                  <label for="office">Office</label>
+                  <input id="office" type="radio" name="mode" style="width: 10px;"/>
+              </div>
+            </div>  
+            <div class="field" id="benefitsdiv">
+              <label for="benefits">Associated Benefits:</label>
+              <textarea id="benefits" placeholder="Mention the additional perks like mediclaim, provident funds, etc. associated with this job role" cols="5" rows="5" maxlength="1500"/></textarea>
+            </div>
+            <div class="field" id="aboutdiv">
+              <label for="about">About Company:</label>
+              <textarea id="about" placeholder="Share some insights about your company's culture and more..." cols="5" rows="5" maxlength="1500"/></textarea>
+            </div>
+            <button type="submit">Post</button>
+          </form>
+        </div>
+    </div>
+  </section>
+
+  {% endblock %}

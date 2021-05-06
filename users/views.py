@@ -65,5 +65,9 @@ class FillUsertypeView(LoginRequiredMixin, View):
         return HttpResponseRedirect(reverse("users:redirect"))
 
         
+class ContactUsView(TemplateView):
+    template_name = "users/contact.html"
 
+class AboutUsView(TemplateView):
+    template_name = "users/about.html"
 

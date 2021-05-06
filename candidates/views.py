@@ -9,9 +9,5 @@ class CandidateHomeView(LoginRequiredMixin, TemplateView):
 class JobsView(TemplateView):
     template_name = "candidates/avail_jobs.html"
 
-class ContactView(TemplateView):
-    template_name = "contact.html"
-
-class AboutView(TemplateView):
-    template_name = "about.html"
-
+class JobsAppliedView(TemplateView):
+    template_name = "candidates/jobs_applied.html"

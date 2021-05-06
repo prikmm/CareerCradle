@@ -1,0 +1,44 @@
+h3{
+    width:100%;
+    height: auto;
+    text-align: center;
+}
+
+.exist_account_info{
+    width: 100%;
+    height: auto;
+    text-align: center;
+
+}
+
+#signup_form{
+    margin-top:50px;
+    margin-left: 42.5%;
+    width:15%;
+    height:auto;
+}
+
+.form-group{
+    float:left;
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.radiobtn{
+    width:auto;
+    height: auto;
+}
+
+.radiogrp{
+    width:50%;
+    height: auto;
+    float:left;
+}
+
+
+
+
+
+
+

@@ -1,11 +1,13 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load static %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 {% block head_links %} 
 
 <title>Signup</title>
+<link rel="stylesheet" href="{% static 'account/signup.css' %}" />
 
 {% endblock %}
 
@@ -34,18 +36,70 @@
 
 <p class="exist_account_info">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
-<form class="container-fluid text-center" id="signup_form" method="post" action="{% url 'account_signup' %}">
+<!--<form class="container-fluid text-center" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
+  <div class="form-group">
+      <label class="control-label field_name">Email: </label>
+      <div id="email" class="input_field">{{ form.email }}</div>
+  </div>
+  <div class="form-group">
+      <label class="control-label field_name">Password: </label>
+      <div id="password1" class="input_field">{{ form.password1 }}</div>
+  </div>
+  <div class="form-group">
+      <label class="control-label field_name">Re-enter Password: </label>
+      <div id="password2" class="input_field">{{ form.password2 }}</div>
+  </div>
+  <div class="form-group" id="radio_btn_div">
+      <label class="control-label" id="radio_btn_field">Usertype: </label>
+      <div id="usertype">{{ form.usertype }}</div>
+  </div>
+  {% if redirect_field_value %}
 
-  {{ form.as_p }}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  
+  {% endif %}
+  
+  <button class="btn btn-outline-primary btn-lg" type="submit">{% trans "Sign Up" %}</button>
+</form>-->
 
+<form id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  <div class="form-group">
+    <label class="control-label" for="email">Email ID:</label>
+    <input autofocus="autofocus" class="form-control" id="id_login" maxlength="30" name="email" placeholder="Email ID" required="required" title="" type="text" />
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="password1">Password:</label>
+    <input class="form-control" id="id_password" name="password1" placeholder="Password" required="required" title="" type="password" />
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="password2">Re-enter Password:</label>
+    <input class="form-control" id="id_password" name="password2" placeholder="Password" required="required" title="" type="password" />
+  </div>
+  <div class="form-group" id="usertypediv" required="required">
+      <div>
+        <label for="usertype">Usertype:</label>
+      </div>
+      <div class="radiobtn">
+        <div class="radiogrp">
+          <label for=1>Candidate</label>
+          <input id="cand_btn" type="radio" name="usertype" value=1 style="width: 10px;"/>
+        </div>
+        <div class="radiogrp">
+          <label for=0>Recruiter</label>
+          <input id="rec_btn" type="radio" name="usertype" value=0 style="width: 10px;"/>
+        </div>
+    </div>
+  </div> 
   {% if redirect_field_value %}
 
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   
   {% endif %}
-  
-  <button class="btn btn-outline-primary btn-lg" type="submit">{% trans "Sign Up" %}</button>
+  <div class="form-group pull-center">
+    <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+  </div>
 </form>
 
 </div>

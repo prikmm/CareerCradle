@@ -1,11 +1,15 @@
-{% extends 'navfoot.html' %}
+{% extends 'users/base_main.html' %}
 {% load  static %}
 
-{%	block	title	%}candidate{%	endblock	%}
+{%	block	title	%}About{%	endblock	%}
+
+{% block custom_scripts_n_links %}
+<link rel="stylesheet" href= " {% static 'css/about.css' %}" />
+{% endblock %}
+
+{%block Welcome_block %}{% endblock %}
 
 {% block content%}
-
-    <link rel="stylesheet" href= " {% static 'css/about.css' %}" />
 
     <section id="about-container">
         <h1 class="h-primary center">About-Us</h1>

@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.bg {
+  align-items: center;
+  background: url(recruiters/static/recruiters/images/Image.jpg) no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+  color: rgba(243, 9, 48, 0.856);
+  line-height: 1.5;
+  margin-bottom: 50px;
+}
+
+.bg h2 {
+  font-weight: 700;
+  font-size: 50px;
+}
+
+.bg h3 {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.bg p {
+  font-weight: 600;
+  font-size: 35px;
+}
+
+.rec_home {
+  position: relative;
+  min-height: 100vh;
+  padding: 50px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #333;
+  background-size: cover;
+  opacity: 0.8;
+}
+
+.rec_home .heading {
+  max-width: 800px;
+  text-align: center;
+  align-items: center;
+}
+
+.rec_home .heading h1 {
+  font-size: 36px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.contactForm {
+  width: 40%;
+  padding: 40px;
+  background: #fff;
+}
+
+.contactForm .field {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  float: left;
+}
+
+.contactForm .field input,
+.contactForm .field textarea {
+  width: 100%;
+  padding: 5px 0px 5px 30px;
+  font-size: 15px;
+  margin: 10px 0;
+  border: 1px solid #000;
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+}
+
+.contactForm .field label {
+  left: 0;
+  padding: 5px 0px 5px 20px;
+  font-size: 20px;
+  margin: 20px 0px 0px 0px;
+  transition: 0.5s;
+  color: #000;
+}
+
+.container .contactForm .field input:focus,
+.container .contactForm .field textarea:focus {
+  border-bottom: 3px solid #000;
+}
+
+.contactForm button {
+  width: 100%;
+  height: 100%;
+  background: gray;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+}
+
+select {
+  appearance: none;
+  outline: 0;
+  background: gray;
+  background-image: none;
+  width: 100%;
+  height: 100%;
+  color: black;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.select {
+  position: relative;
+  display: block;
+  width: 15em;
+  height: 4em;
+  line-height: 3;
+  overflow: hidden;
+  border-radius: 0.25em;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 991px) {
+  .rec_home {
+    padding: 50px;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .container .contactForm {
+    width: 100%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.radiobtn {
+  display: inline-block;
+}
+
+#companydiv, #positiondiv{
+  width: 45%;
+  margin-right: 5%;
+}
+
+#expdiv, #workinghrsdiv, #sectordiv,
+#citydiv, #statediv, #countrydiv{
+  width: 32%;
+  margin-right: 1.3%;
+}
+
+#minreqdiv textarea,
+#benefitsdiv textarea,
+#aboutdiv textarea{
+  padding: 30px;
+}
+
+#modediv .radiobtn label{
+  font-size: 15px;
+}

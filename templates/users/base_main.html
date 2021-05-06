@@ -13,13 +13,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
   <script src="{% static 'js/scripts.js' %}"></script>
+  {% block custom_scripts_n_links %}{% endblock %}
 </head>
 
 <body>
   <!-- Navbar -->
   <nav class="navbar">
     <div class="inner-width">
-      <a href="/" class="logo"></a>
+      <div id="logodiv">
+        {% if request.user.usertype == 1 %} <!--href will not work in img tag, so enclose img tag in 'a' tag-->
+        <img src="{% static 'images/Cc.png' %}" href="{% url 'candidates:home' %}" alt="CareerCradle Logo">
+        <!--<a  class="logo"></a>-->
+        {% endif %}
+        {% if request.user.usertype == 0 %}
+        <img src="{% static 'images/Cc.png' %}" href="{% url 'recruiters:home' %}" alt="CareerCradle Logo">
+        <!--<a  class="logo"></a>-->
+        {% endif %}
+      </div>
       <button class="menu-toggler">
         <span></span>
         <span></span>
@@ -27,28 +37,46 @@
       </button>
       <div class="navbar-menu">
         {%	if	request.user.is_authenticated	%}	
-        <h3><strong>Hello..!!{{	request.user.email}}</strong></h3>
+        <h3><strong>{{request.user.email}}</strong></h3>
         {% endif %}
         
-        <a href="#home">Home</a>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#profile">Profile</a>
-        <a href="about">About</a>
-        <a href="contact">Contact</a>   
-        
+        {% if request.user.usertype == 1 %}
+        <a href="{% url 'candidates:home' %}">Home</a>
+        <a href="{% url 'candidates:dashboard' %}">Dashboard</a>
+        <!--<a href="#Profile">Profile</a>-->
+        {% endif %}
+        {% if request.user.usertype == 0 %}
+        <a href="{% url 'recruiters:home' %}">Home</a>
+        <a href="{% url 'recruiters:jobs_posted' %}">Dashboard</a>
+        <!--<a href="#Profile">Profile</a>-->
+        {% endif %}
+        <a href="{% url 'users:aboutus' %}">About</a>
+        <a href="{% url 'users:contactus' %}">Contact</a>  
+        <a href="{% url 'account_logout' %}">Logout</a>
       </div>
     </div>
   </nav>
 
+  {% block Welcome_block %}
   <!-- Home -->
   <section id="home">
     <div class="inner-width">
       <div class="content">
         <h1>Career Cradle</h1>
-        <h2>**Make</h2>
+        {% if request.user.usertype == 1 %}
+        <div id="candidate_tagline">
+          <h2>**Make </h2>
+        </div>
+        {% endif %}
+        {% if request.user.usertype == 0 %}
+        <div id="recruiter_tagline">
+          <h2>**Let's </h2>
+        </div>
+        {% endif %}
       </div>
     </div>
   </section>
+  {% endblock %}
 
   <!--content-->
   <div>{% block content %} {% endblock %}</div> 

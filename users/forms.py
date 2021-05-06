@@ -14,7 +14,7 @@ class MyCustomSignupForm(SignupForm):
         super(MyCustomSignupForm, self).__init__(*args, **kwargs)
         self.fields['usertype'] = forms.ChoiceField(choices=[(1, "Candidate"),
                                                              (0, "Recruiter")],
-                                                    widget=forms.RadioSelect)
+                                                    widget=forms.RadioSelect(attrs={'class':'usertype_radio'}))
 
     def save(self, request):
         user = super(MyCustomSignupForm, self).save(request)

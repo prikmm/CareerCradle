@@ -121,8 +121,12 @@ venv.bak/
 dmypy.json
 
 # Pyre type checker
+
 .pyre/
 
 
 # for password and secret key protection
 .env
+
+
+django-allauth-templates-master

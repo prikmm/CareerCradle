@@ -1,0 +1,47 @@
+{% extends 'users/base_main.html' %}
+{% load static %}
+
+
+{%	block	title	%}IT {%	endblock	%}
+
+{% block custom_scripts_n_links %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"0>
+<link rel="stylesheet" href= " {% static 'css/jobs_posted.css' %}" />
+{% endblock %}
+
+{%block Welcome_block %}{% endblock %}
+
+
+{% block content %}
+
+</br>
+
+<div class="container card">
+    <h1>Jobs posted by You</h1>
+    <div class="card-body">
+        <table class="table table-hover">
+            <tr>
+                <th>Company Name</th>
+                <th>Position</th>
+                <th>Description</th>
+                <th>Salary</th>
+                <th>Experience</th>
+                <th>Location</th>
+            </tr>
+            
+                <tr>
+                    <td>Wipro</td>
+                    <td>SDE</td>
+                    <td>Software development engineers (SDE) work in a range of industries to apply the principles and techniques of computer engineering , information analysis, and computer science to design, build.</td>
+                    <td>4560000</td>
+                    <td>3</td>
+                    <td>Remote</td>
+                </tr>
+
+                
+            
+        </table>
+    </div>
+</div>
+
+{% endblock %}

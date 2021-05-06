@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
   }
-  
+
   /* Navigation-Bar */
   #navbar{
     display: flex;
@@ -33,7 +33,6 @@
   #logo img{
     margin: 3px 6px;
     height: 40px;
-  
   }
   
   
@@ -85,15 +84,17 @@
 #about{
     margin: 34px;
     display: flex;
-  }
+    height: 600px;
+}
+
 #about .box{
     border: 2px solid brown;
     padding: 50px;
     margin: 3px 6px;
-    width: 60%;
+    width: 50%;
     margin: auto;
     border-radius: 28px;
-    background-color: rgba(160, 156, 156, 0.938);
+    background-color:#616161;
     
 }
 #about .box img{
@@ -104,12 +105,18 @@
   
 #about .box p{
     font-family: 'Bree Serif',serif;
-    
+    margin-top: 50px;
+    width:80%;
+    margin: 40px 10%;
+    font-size: 20px;
+    color: #FFFFFF;
 }
 
 footer{
-    background: black;
+    background: none;
+    background-color: black;
     color: white;
     padding: 9px 20px;
     text-align: center;
+    margin-top: -85px;
 }

@@ -1,14 +1,18 @@
-{% extends 'navfoot.html' %}
+{% extends 'users/base_main.html' %}
 {% load static %}
 
 
 {%	block	title	%}IT {%	endblock	%}
 
+{% block custom_scripts_n_links %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"0>
+<link rel="stylesheet" href="{% static 'css/avail_jobs.css' %}"/>
+{% endblock %}
+
+{%block Welcome_block %}{% endblock %}
+
 
 {% block content %}
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"0>
-
 
 </br>
 
